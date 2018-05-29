@@ -10,8 +10,9 @@
 #   Whether to manage wmf using Puppet. Valid values are true (default) 
 #   and false.
 # [*ensure*]
-#   Status of Windows Management Framework. Valid values are 'present' (default)
-#   and 'absent'.
+#   Status of Windows Management Framework. Valid values are 'present' 
+#   (default), 'absent' or a version number of the "powershell" Chocolatey 
+#   package (see params.pp).
 #
 # == Authors
 #
@@ -23,8 +24,8 @@
 #
 class wmf
 (
-    Boolean                  $manage = true,
-    Enum['present','absent'] $ensure = 'present'
+    Boolean $manage = true,
+    String  $ensure = $::wmf::params::ensure
 
 ) inherits wmf::params
 {

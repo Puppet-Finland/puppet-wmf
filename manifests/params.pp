@@ -15,4 +15,10 @@ class wmf::params {
             fail("Unsupported OS: ${::osfamily}")
         }
     }
+
+    $ensure = $facts['os']['release']['full'] ? {
+        default   => 'present',
+        '2008 R2' => '5.0.10586.20170115',
+    }
+
 }
